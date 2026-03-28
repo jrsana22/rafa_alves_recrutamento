@@ -708,10 +708,8 @@
         body   : JSON.stringify(payload)
       });
 
-      // Exibe tela de sucesso
-      document.getElementById('form-section').style.display = 'none';
-      document.getElementById('success-state').classList.add('visible');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Redireciona para página de obrigado
+      window.location.href = 'obrigado.html';
 
     } catch (err) {
       console.error(err);
