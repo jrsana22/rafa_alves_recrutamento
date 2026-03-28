@@ -26,8 +26,8 @@ function doPost(e) {
 
     // Cria cabeçalhos se a planilha estiver vazia
     if (planilha.getLastRow() === 0) {
-      planilha.appendRow(['Data', 'Nome Completo', 'WhatsApp', 'Ocupação', 'Cidade']);
-      planilha.getRange(1, 1, 1, 5).setFontWeight('bold');
+      planilha.appendRow(['Data', 'Nome Completo', 'E-mail', 'WhatsApp', 'Ocupação', 'Cidade']);
+      planilha.getRange(1, 1, 1, 6).setFontWeight('bold');
     }
 
     // Formata data dd/mm/aaaa (fuso de Brasília)
@@ -38,6 +38,7 @@ function doPost(e) {
     planilha.appendRow([
       dataFormatada,
       dados.nome,
+      dados.email,
       dados.whatsapp,
       dados.ocupacao,
       dados.cidade
@@ -45,7 +46,9 @@ function doPost(e) {
 
     // ── Envia mensagem WhatsApp via Evolution API ──
     var mensagem =
-      'Primeiramente parabéns pela atitude e decisão em participar do nosso processo de seleção para novos empreendedores.';
+      'Olá, ' + dados.nome.split(' ')[0] + '! 👋\n\n' +
+      'Parabéns pelo interesse! Essa busca por algo que realmente pode te levar a um novo patamar de resultado já diz muito sobre você. 🚀\n\n' +
+      'Posso te explicar rapidinho como funciona essa oportunidade?';
 
     var payload = JSON.stringify({ number: dados.whatsapp, text: mensagem });
     var opcoes = {
