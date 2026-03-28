@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oportunidade de Negócio — Processo Seletivo</title>
+  <meta name="description" content="Descubra uma oportunidade real de geração de renda. Cadastre-se e participe do nosso processo seletivo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #111118;
+      --bg-card: #16161e;
+      --bg-card-hover: #1c1c26;
+      --border: rgba(255,255,255,0.08);
+      --border-accent: rgba(99,102,241,0.4);
+      --text-primary: #f1f0f5;
+      --text-secondary: #9d9cb0;
+      --text-muted: #5c5b6e;
+      --accent: #6366f1;
+      --accent-2: #8b5cf6;
+      --accent-3: #06b6d4;
+      --green: #10b981;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── BACKGROUND GLOW ── */
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-glow::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .bg-glow::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── HEADER BADGE ── */
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #6366f1;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 32px 0;
+    }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .highlight-card:hover {
+      border-color: var(--border-accent);
+      transform: translateX(3px);
+    }
+    .highlight-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .highlight-icon.green  { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2); }
+    .highlight-icon.purple { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2); }
+    .highlight-icon.blue   { background: rgba(6,182,212,0.12);  border: 1px solid rgba(6,182,212,0.2); }
+    .highlight-body {
+      flex: 1;
+    }
+    .highlight-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .highlight-title span {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .highlight-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── BENEFITS LIST ── */
+    .benefits-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+    .benefits-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .benefit-item:last-child { border-bottom: none; }
+    .benefit-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+    .benefit-icon.green  { background: rgba(16,185,129,0.15); }
+    .benefit-icon.purple { background: rgba(139,92,246,0.15); }
+    .benefit-icon.blue   { background: rgba(6,182,212,0.15); }
+    .benefit-icon.gold   { background: rgba(245,158,11,0.15); }
+    .benefit-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .benefit-text span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    }
+    .form-header {
+      margin-bottom: 28px;
+    }
+    .form-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .form-header p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ── FORM FIELDS ── */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    label .required {
+      color: #ef4444;
+      margin-left: 3px;
+    }
+    input, select {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input::placeholder { color: var(--text-muted); }
+    input:focus, select:focus {
+      border-color: var(--accent);
+      background: rgba(99,102,241,0.06);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill='%235c5b6e' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    select option { background: #1c1c26; }
+
+    /* ── PHONE INPUT ── */
+    .phone-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+    .ddi-select {
+      width: 110px;
+      flex-shrink: 0;
+    }
+    .phone-wrapper input {
+      flex: 1;
+    }
+
+    /* ── SUBMIT ── */
+    .btn-submit {
+      width: 100%;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.3);
+    }
+    .btn-submit:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(99,102,241,0.4);
+    }
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+    .btn-submit svg {
+      flex-shrink: 0;
+    }
+
+    /* ── PRIVACY NOTE ── */
+    .privacy-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .success-state.visible { display: block; }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+    }
+    .success-state h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .success-state p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.25);
+      color: #34d399;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-top: 20px;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .page-wrapper { padding: 24px 16px 60px; }
+      .form-card { padding: 24px 20px; }
+      .highlight-card { padding: 14px 16px; gap: 12px; }
+      .highlight-icon { width: 38px; height: 38px; font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge-tag">
+      <span class="badge-dot"></span>
+      Vagas Limitadas · Processo Seletivo Aberto
+    </div>
+    <h1>
+      Construa uma<br/>
+      <span class="highlight">renda sólida</span><br/>
+      do seu jeito
+    </h1>
+    <p>
+      Treinamento direto ao ponto, suporte completo e uma estrutura que trabalha por você.
+      Veja o que nossos consultores estão conquistando.
+    </p>
+  </div>
+
+  <!-- STATS -->
+  <div class="highlights">
+    <div class="highlight-card">
+      <div class="highlight-icon green">💰</div>
+      <div class="highlight-body">
+        <div class="highlight-title">Fature <span>R$200,00 ou mais</span> por dia</div>
+        <div class="highlight-sub">Resultado desde os primeiros dias de atuação</div>
+      </div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon purple">🔄</div>
+      <div class="highlight-body">
+        <div class="highlight-title">Renda recorrente</div>
+        <div class="highlight-sub">Ganhos contínuos todo mês, sem depender de um único cliente</div>
+      </div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon blue">📈</div>
+      <div class="highlight-body">
+        <div class="highlight-title">Treinamento e acompanhamento diário</div>
+        <div class="highlight-sub">Suporte de líderes experientes do primeiro ao último passo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="benefits-section">
+    <p class="benefits-title">O que você vai ter acesso</p>
+
+    <div class="benefit-item">
+      <div class="benefit-icon green">🎯</div>
+      <div class="benefit-text">
+        <strong>Treinamento direto ao ponto</strong>
+        <span>Aprenda no seu ritmo e já saia pronto para gerar resultado</span>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon purple">🤝</div>
+      <div class="benefit-text">
+        <strong>Suporte de líderes experientes</strong>
+        <span>Acompanhamento próximo desde o primeiro dia</span>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon blue">📱</div>
+      <div class="benefit-text">
+        <strong>Ferramentas e automação</strong>
+        <span>Estrutura profissional para você focar no que importa</span>
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon gold">💰</div>
+      <div class="benefit-text">
+        <strong>Renda crescente e escalável</strong>
+        <span>Quanto mais você aplica, mais os resultados crescem</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+    <div id="form-section">
+      <div class="form-header">
+        <h2>Quero participar do processo seletivo</h2>
+        <p>Preencha os dados abaixo. Entraremos em contato no seu WhatsApp em instantes.</p>
+      </div>
+
+      <form id="lead-form" novalidate>
+
+        <div class="form-group">
+          <label for="nome">Seu nome completo <span class="required">*</span></label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Ex: Rafael Sousa"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp <span class="required">*</span></label>
+          <div class="phone-wrapper">
+            <select class="ddi-select" id="ddi" name="ddi">
+              <option value="+55">🇧🇷 +55</option>
+            </select>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              placeholder="(71) 99999-9999"
+              autocomplete="tel"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ocupacao">Ocupação atual <span class="required">*</span></label>
+          <select id="ocupacao" name="ocupacao" required>
+            <option value="" disabled selected>Selecione sua situação</option>
+            <option value="empregado_clt">Empregado CLT</option>
+            <option value="autonomo">Autônomo / Freelancer</option>
+            <option value="empresario">Empresário / Empreendedor</option>
+            <option value="vendedor">Vendedor / Comercial</option>
+            <option value="desempregado">Buscando oportunidade</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade de atuação <span class="required">*</span></label>
+          <input
+            type="text"
+            id="cidade"
+            name="cidade"
+            placeholder="Ex: Salvador, BA"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/>
+          </svg>
+          Quero participar — Entrar em contato
+        </button>
+
+        <div class="privacy-note">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          Seus dados estão seguros e não serão compartilhados
+        </div>
+      </form>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">✅</div>
+      <h3>Cadastro realizado!</h3>
+      <p>
+        Ótimo! Já estamos entrando em contato com você pelo WhatsApp.
+        Fique de olho nas mensagens.
+      </p>
+      <div class="success-badge">
+        <span>💬</span> Mensagem enviada para o seu WhatsApp
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    Ao se cadastrar, você concorda em ser contatado pelo WhatsApp informado.
+  </div>
+
+</div>
+
+<script>
+  /**
+   * ──────────────────────────────────────────────────────────────────────
+   *  CONFIGURAÇÃO
+   *  Após implantar o apps-script-planilha.gs como Web App no Google Apps
+   *  Script, cole a URL gerada abaixo.
+   * ──────────────────────────────────────────────────────────────────────
+   */
+  const APPS_SCRIPT_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+  // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
+
+  // ── Máscara de telefone ──
+  const phoneInput = document.getElementById('whatsapp');
+  phoneInput.addEventListener('input', function () {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 6)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if (v.length > 0) v = `(${v}`;
+    this.value = v;
+  });
+
+  // ── Formata número → 55DDDNÚMERO ──
+  function formatPhone(raw) {
+    const d = raw.replace(/\D/g, '');
+    return (d.startsWith('55') && d.length >= 12) ? d : '55' + d;
+  }
+
+  // ── Ícone de loading ──
+  const ICON_LOADING = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="animation:spin 1s linear infinite">
+      <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="20"/>
+    </svg> Enviando...`;
+
+  const ICON_WA = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/>
+    </svg> Quero participar — Entrar em contato`;
+
+  // ── Form submit ──
+  const form      = document.getElementById('lead-form');
+  const btnSubmit = form.querySelector('.btn-submit');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const nome     = document.getElementById('nome').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const ocupacao = document.getElementById('ocupacao').value;
+    const cidade   = document.getElementById('cidade').value.trim();
+
+    if (!nome || !whatsapp || !ocupacao || !cidade) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('COLE_AQUI')) {
+      alert('⚠️ Configure a URL do Apps Script antes de publicar a página.');
+      return;
+    }
+
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = ICON_LOADING;
+
+    // Formata data dd/mm/aaaa (Brasília)
+    const agora = new Date();
+    const data  = agora.toLocaleDateString('pt-BR', { timeZone: 'America/Bahia' });
+
+    const payload = {
+      nome,
+      whatsapp : formatPhone(whatsapp),
+      ocupacao,
+      cidade,
+      data          // dd/mm/aaaa — salvo na planilha e usada pelo Apps Script
+    };
+
+    try {
+      // O Apps Script cuida de: salvar planilha + enviar WhatsApp + adicionar tag n8n
+      await fetch(APPS_SCRIPT_URL, {
+        method : 'POST',
+        mode   : 'no-cors',          // Apps Script não precisa de CORS preflight
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify(payload)
+      });
+
+      // Exibe tela de sucesso
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success-state').classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error(err);
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = ICON_WA;
+      alert('Ocorreu um erro ao enviar. Tente novamente.');
+    }
+  });
+</script>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+</body>
+</html>
