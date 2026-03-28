@@ -11,10 +11,11 @@
  *  5. Copie a URL gerada e cole em pagina-recrutamento.html na variável SHEETS_URL
  */
 
-var SHEET_ID = '1OqXhDiozaOiLNaSqp9ZzbkJNPNp-yidiOlusRuOAss8';
+var SHEET_ID     = '1OqXhDiozaOiLNaSqp9ZzbkJNPNp-yidiOlusRuOAss8';
 var EVO_URL      = 'https://painelsana-evolution-api.mofsig.easypanel.host';
 var EVO_INSTANCE = 'rafa_alves_recrutamento';
 var EVO_APIKEY   = 'A1E94F2E18C9-4F0F-B43F-A94103212850';
+var N8N_WEBHOOK  = 'https://webhook.dev.solucoesdeia.com/webhook/recrutamento-rafa-lead_inserelead';
 
 function doPost(e) {
   try {
@@ -72,6 +73,16 @@ function doPost(e) {
       muteHttpExceptions: true
     };
     UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagOpcoes);
+
+    // ── Registra lead no Supabase via n8n ──
+    var supabasePayload = JSON.stringify({ whatsapp: dados.whatsapp, nome: dados.nome });
+    var supabaseOpcoes = {
+      method: 'post',
+      contentType: 'application/json',
+      payload: supabasePayload,
+      muteHttpExceptions: true
+    };
+    UrlFetchApp.fetch(N8N_WEBHOOK, supabaseOpcoes);
 
     return resposta({ status: 'ok' });
 
