@@ -43,11 +43,9 @@ function doPost(e) {
     ]);
 
     // ── Envia mensagem WhatsApp via Evolution API ──
-    var primeiroNome = dados.nome.split(' ')[0];
     var mensagem =
-      'Olá, *' + primeiroNome + '*! 👋\n\n' +
-      'Parabéns pelo interesse! Essa busca por algo que realmente pode te levar a um novo patamar de resultado já diz muito sobre você. 🚀\n\n' +
-      'Posso te explicar rapidinho como funciona essa oportunidade?';
+      'Primeiramente parabéns pela atitude e decisão em participar do nosso processo de seleção para novos empreendedores.\n\n' +
+      'Você acabou de preencher um formulário com interesse na vaga em trabalhar com proteção de veículos. Posso te explicar rapidinho sobre a oportunidade que temos aqui?';
 
     var payload = JSON.stringify({ number: dados.whatsapp, text: mensagem });
     var opcoes = {
