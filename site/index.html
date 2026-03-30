@@ -648,13 +648,6 @@
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJTAGKQSfQoQN_-Pge5lqbJaQdiyNN2nN_pOqIhQAh6JTzeuLkbZGta0URA09FfSsT/exec';
   // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
 
-  // ── Scroll automático até o formulário no mobile ──
-  if (window.innerWidth <= 480) {
-    window.addEventListener('load', function () {
-      document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
-
   // ── Máscara de telefone ──
   const phoneInput = document.getElementById('whatsapp');
   phoneInput.addEventListener('input', function () {
