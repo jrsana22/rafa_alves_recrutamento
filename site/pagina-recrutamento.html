@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Oportunidade de Negócio — Processo Seletivo</title>
   <meta name="description" content="Descubra uma oportunidade real de geração de renda. Cadastre-se e participe do nosso processo seletivo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1902049393848759');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+
 
   <style>
     *, *::before, *::after {
@@ -36,7 +54,8 @@
       --radius-lg: 20px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
+    html, body { overflow-x: hidden; }
 
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -436,13 +455,39 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .page-wrapper { padding: 24px 16px 20px; }
-      .form-card { padding: 24px 20px; }
+      .form-card { padding: 24px 20px; order: 10; }
       .highlight-card { padding: 14px 16px; gap: 12px; }
       .highlight-icon { width: 38px; height: 38px; font-size: 17px; }
+      .page-wrapper { display: flex; flex-direction: column; }
     }
   </style>
 </head>
 <body>
+
+<script>
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
+  var scrollBlocked = true;
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  window.addEventListener('scroll', function() {
+    if (scrollBlocked) {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, true);
+
+  window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+    scrollBlocked = false;
+  });
+
+  setTimeout(function() { scrollBlocked = false; }, 2000);
+</script>
 
 <div class="bg-glow"></div>
 
@@ -648,12 +693,6 @@
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJTAGKQSfQoQN_-Pge5lqbJaQdiyNN2nN_pOqIhQAh6JTzeuLkbZGta0URA09FfSsT/exec';
   // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
 
-  // ── Scroll automático até o formulário no mobile ──
-  if (window.innerWidth <= 480) {
-    window.addEventListener('load', function () {
-      document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
 
   // ── Máscara de telefone ──
   const phoneInput = document.getElementById('whatsapp');
@@ -729,8 +768,14 @@
         body   : JSON.stringify(payload)
       });
 
+      // Rastreia o evento de Lead no Meta Pixel
+      fbq('track', 'Lead', {
+        value: 0.00,
+        currency: 'BRL'
+      });
+
       // Redireciona para página de obrigado
-      window.location.href = 'obrigado.html';
+      window.location.href = 'obrigado.html?t=' + Date.now();
 
     } catch (err) {
       console.error(err);
