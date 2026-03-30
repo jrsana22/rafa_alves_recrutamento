@@ -464,30 +464,6 @@
 </head>
 <body>
 
-<script>
-  if ('scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
-
-  var scrollBlocked = true;
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
-
-  window.addEventListener('scroll', function() {
-    if (scrollBlocked) {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-  }, true);
-
-  window.addEventListener('load', function() {
-    window.scrollTo(0, 0);
-    scrollBlocked = false;
-  });
-
-  setTimeout(function() { scrollBlocked = false; }, 2000);
-</script>
 
 <div class="bg-glow"></div>
 
