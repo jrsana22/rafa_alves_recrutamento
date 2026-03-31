@@ -15,7 +15,7 @@ var SHEET_ID     = '1OqXhDiozaOiLNaSqp9ZzbkJNPNp-yidiOlusRuOAss8';
 var EVO_URL      = 'https://painelsana-evolution-api.mofsig.easypanel.host';
 var EVO_INSTANCE = 'rafa_alves_recrutamento';
 var EVO_APIKEY   = 'A1E94F2E18C9-4F0F-B43F-A94103212850';
-var N8N_WEBHOOK  = 'https://webhook.dev.solucoesdeia.com/webhook/rafa_leads_recrutamento';
+var N8N_WEBHOOK_DISPARA = 'https://webhook.dev.solucoesdeia.com/webhook/dispara_rafa_lead';
 var RAFA_WHATSAPP = '5571987804910';  // Número do Rafa para disparar mensagens
 
 function doPost(e) {
@@ -82,15 +82,21 @@ function doPost(e) {
     };
     UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagOpcoes);
 
-    // ── Registra lead no Supabase via n8n ──
-    var supabasePayload = JSON.stringify({ whatsapp: dados.whatsapp, nome: dados.nome });
-    var supabaseOpcoes = {
+    // ── Dispara webhook n8n para enviar mensagem ──
+    var disparaPayload = JSON.stringify({
+      whatsapp: dados.whatsapp,
+      nome: dados.nome,
+      email: dados.email,
+      ocupacao: dados.ocupacao,
+      cidade: dados.cidade
+    });
+    var disparaOpcoes = {
       method: 'post',
       contentType: 'application/json',
-      payload: supabasePayload,
+      payload: disparaPayload,
       muteHttpExceptions: true
     };
-    UrlFetchApp.fetch(N8N_WEBHOOK, supabaseOpcoes);
+    UrlFetchApp.fetch(N8N_WEBHOOK_DISPARA, disparaOpcoes);
 
     return resposta({ status: 'ok' });
 
