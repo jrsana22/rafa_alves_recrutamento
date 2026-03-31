@@ -16,6 +16,7 @@ var EVO_URL      = 'https://painelsana-evolution-api.mofsig.easypanel.host';
 var EVO_INSTANCE = 'rafa_alves_recrutamento';
 var EVO_APIKEY   = 'A1E94F2E18C9-4F0F-B43F-A94103212850';
 var N8N_WEBHOOK  = 'https://webhook.dev.solucoesdeia.com/webhook/recrutamento-rafa-lead_inserelead';
+var RAFA_WHATSAPP = '5571987804910';  // Número do Rafa para disparar mensagens
 
 function doPost(e) {
   try {
@@ -44,13 +45,17 @@ function doPost(e) {
       dados.cidade
     ]);
 
-    // ── Envia mensagem WhatsApp via Evolution API ──
+    // ── Envia mensagem WhatsApp via Evolution API (DO RAFA PARA O CLIENTE) ──
     var mensagem =
       'Olá, ' + dados.nome.split(' ')[0] + '! 👋\n\n' +
       'Parabéns pelo interesse! Essa busca por algo que realmente pode te levar a um novo patamar de resultado já diz muito sobre você. 🚀\n\n' +
       'Posso te explicar rapidinho como funciona essa oportunidade?';
 
-    var payload = JSON.stringify({ number: dados.whatsapp, text: mensagem });
+    // Envia a mensagem do Rafa para o número do cliente
+    var payload = JSON.stringify({
+      number: dados.whatsapp,
+      text: mensagem
+    });
     var opcoes = {
       method: 'post',
       contentType: 'application/json',
@@ -59,6 +64,7 @@ function doPost(e) {
       muteHttpExceptions: true
     };
 
+    // Usa a instância "rafa_alves_recrutamento" que já está configurada com o número do Rafa
     UrlFetchApp.fetch(EVO_URL + '/message/sendText/' + EVO_INSTANCE, opcoes);
 
     // ── Adiciona tag para ativar fluxo n8n ──
