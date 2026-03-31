@@ -750,8 +750,10 @@
         currency: 'BRL'
       });
 
-      // Redireciona para página de obrigado
-      window.location.href = 'obrigado.html?t=' + Date.now();
+      // Aguarda o pixel ser enviado antes de redirecionar
+      setTimeout(function() {
+        window.location.href = 'obrigado.html?t=' + Date.now();
+      }, 500);
 
     } catch (err) {
       console.error(err);
