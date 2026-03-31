@@ -15,7 +15,7 @@ var SHEET_ID     = '1OqXhDiozaOiLNaSqp9ZzbkJNPNp-yidiOlusRuOAss8';
 var EVO_URL      = 'https://painelsana-evolution-api.mofsig.easypanel.host';
 var EVO_INSTANCE = 'rafa_alves_recrutamento';
 var EVO_APIKEY   = 'A1E94F2E18C9-4F0F-B43F-A94103212850';
-var N8N_WEBHOOK  = 'https://webhook.dev.solucoesdeia.com/webhook/recrutamento-rafa-lead_inserelead';
+var N8N_WEBHOOK  = 'https://webhook.dev.solucoesdeia.com/webhook/rafa_leads_recrutamento';
 var RAFA_WHATSAPP = '5571987804910';  // Número do Rafa para disparar mensagens
 
 function doPost(e) {
