@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Oportunidade de Negócio — Processo Seletivo</title>
   <meta name="description" content="Descubra uma oportunidade real de geração de renda. Cadastre-se e participe do nosso processo seletivo." />
-  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="pragma" content="no-cache" />
-  <meta http-equiv="expires" content="0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Meta Pixel Code -->
   <script>
-    // Desativa scroll restaurado pelo browser
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-    // Força topo ANTES da renderização
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1902049393848759');
+    fbq('track', 'PageView');
   </script>
+  <!-- End Meta Pixel Code -->
+
 
   <style>
     *, *::before, *::after {
@@ -49,6 +54,8 @@
       --radius-lg: 20px;
     }
 
+    html { scroll-behavior: auto; }
+    html, body { overflow-x: hidden; }
 
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -445,16 +452,114 @@
       color: var(--text-muted);
     }
 
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.visible { display: flex; }
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      max-width: 420px;
+      text-align: center;
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .modal-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 24px;
+    }
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .modal-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .modal-number {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .modal-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .modal-btn:active { transform: scale(0.98); }
+    .modal-btn-cancel {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .modal-btn-cancel:hover { opacity: 0.8; }
+    .modal-btn-confirm {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+    .modal-btn-confirm:hover { opacity: 0.92; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .page-wrapper { padding: 24px 16px 20px; }
-      .form-card { padding: 24px 20px; }
+      .form-card { padding: 24px 20px; order: 10; }
       .highlight-card { padding: 14px 16px; gap: 12px; }
       .highlight-icon { width: 38px; height: 38px; font-size: 17px; }
+      .page-wrapper { display: flex; flex-direction: column; }
+      .modal-content { padding: 28px 20px; max-width: 90%; }
     }
   </style>
 </head>
 <body>
+
 
 <div class="bg-glow"></div>
 
@@ -649,6 +754,24 @@
 
 </div>
 
+<!-- MODAL DE CONFIRMAÇÃO DE WHATSAPP -->
+<div class="modal-overlay" id="modal-whatsapp">
+  <div class="modal-content">
+    <div class="modal-icon">📱</div>
+    <div class="modal-title">Seu WhatsApp tá correto?</div>
+    <div class="modal-description">
+      Confirme o número abaixo para continuarmos
+    </div>
+    <div class="modal-number" id="modal-number-display">
+      +55 (71) 99999-9999
+    </div>
+    <div class="modal-buttons">
+      <button type="button" class="modal-btn modal-btn-cancel" id="modal-cancel">Corrigir</button>
+      <button type="button" class="modal-btn modal-btn-confirm" id="modal-confirm">Confirmar</button>
+    </div>
+  </div>
+</div>
+
 <script>
   /**
    * ──────────────────────────────────────────────────────────────────────
@@ -657,8 +780,9 @@
    *  Script, cole a URL gerada abaixo.
    * ──────────────────────────────────────────────────────────────────────
    */
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJTAGKQSfQoQN_-Pge5lqbJaQdiyNN2nN_pOqIhQAh6JTzeuLkbZGta0URA09FfSsT/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzGL-rSb-KC9FiKaCjiuuRakI1dAD7W6gH1NdcuEBaNa1RBPPoOOk8KVfLea9IOQslQWQ/exec';
   // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
+
 
   // ── Máscara de telefone ──
   const phoneInput = document.getElementById('whatsapp');
@@ -688,8 +812,14 @@
     </svg> Quero participar — Entrar em contato`;
 
   // ── Form submit ──
-  const form      = document.getElementById('lead-form');
-  const btnSubmit = form.querySelector('.btn-submit');
+  const form             = document.getElementById('lead-form');
+  const btnSubmit        = form.querySelector('.btn-submit');
+  const modal            = document.getElementById('modal-whatsapp');
+  const modalCancel      = document.getElementById('modal-cancel');
+  const modalConfirm     = document.getElementById('modal-confirm');
+  const modalNumberDisplay = document.getElementById('modal-number-display');
+
+  let pendingFormData = null;  // Armazena dados do formulário enquanto aguarda confirmação
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -709,6 +839,36 @@
       return;
     }
 
+    // Armazena dados e mostra modal de confirmação
+    pendingFormData = {
+      nome,
+      email,
+      whatsapp: formatPhone(whatsapp),
+      ocupacao,
+      cidade
+    };
+
+    // Formata número com DDI para exibição
+    const phoneFormatted = '+55 ' + whatsapp;
+    modalNumberDisplay.textContent = phoneFormatted;
+
+    // Mostra modal
+    modal.classList.add('visible');
+  });
+
+  // ── Cancelar confirmação ──
+  modalCancel.addEventListener('click', function () {
+    modal.classList.remove('visible');
+    pendingFormData = null;
+    document.getElementById('whatsapp').focus();
+  });
+
+  // ── Confirmar e enviar ──
+  modalConfirm.addEventListener('click', async function () {
+    modal.classList.remove('visible');
+
+    if (!pendingFormData) return;
+
     btnSubmit.disabled = true;
     btnSubmit.innerHTML = ICON_LOADING;
 
@@ -717,11 +877,7 @@
     const data  = agora.toLocaleDateString('pt-BR', { timeZone: 'America/Bahia' });
 
     const payload = {
-      nome,
-      email,
-      whatsapp : formatPhone(whatsapp),
-      ocupacao,
-      cidade,
+      ...pendingFormData,
       data          // dd/mm/aaaa — salvo na planilha e usada pelo Apps Script
     };
 
@@ -734,14 +890,23 @@
         body   : JSON.stringify(payload)
       });
 
-      // Redireciona para página de obrigado
-      window.location.href = 'obrigado.html';
+      // Rastreia o evento de Lead no Meta Pixel
+      fbq('track', 'Lead', {
+        value: 0.00,
+        currency: 'BRL'
+      });
+
+      // Aguarda o pixel ser enviado antes de redirecionar
+      setTimeout(function() {
+        window.location.href = 'obrigado.html?t=' + Date.now();
+      }, 500);
 
     } catch (err) {
       console.error(err);
       btnSubmit.disabled = false;
       btnSubmit.innerHTML = ICON_WA;
       alert('Ocorreu um erro ao enviar. Tente novamente.');
+      pendingFormData = null;
     }
   });
 </script>

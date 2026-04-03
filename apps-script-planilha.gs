@@ -67,20 +67,35 @@ function doPost(e) {
     // Usa a instância "rafa_alves_recrutamento" que já está configurada com o número do Rafa
     UrlFetchApp.fetch(EVO_URL + '/message/sendText/' + EVO_INSTANCE, opcoes);
 
-    // ── Adiciona tag para ativar fluxo n8n ──
-    var tagPayload = JSON.stringify({
+    // ── Adiciona tag "recrutamento_rafa" no cliente ──
+    var tagClientePayload = JSON.stringify({
       number: dados.whatsapp,
       labelId: 'recrutamento_rafa',
       action: 'add'
     });
-    var tagOpcoes = {
+    var tagClienteOpcoes = {
       method: 'post',
       contentType: 'application/json',
       headers: { 'apikey': EVO_APIKEY },
-      payload: tagPayload,
+      payload: tagClientePayload,
       muteHttpExceptions: true
     };
-    UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagOpcoes);
+    UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagClienteOpcoes);
+
+    // ── Adiciona tag "LEAD CONSULTOR - IA" no número do Rafa ──
+    var tagRafaPayload = JSON.stringify({
+      number: RAFA_WHATSAPP,
+      labelId: 'LEAD CONSULTOR - IA',
+      action: 'add'
+    });
+    var tagRafaOpcoes = {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { 'apikey': EVO_APIKEY },
+      payload: tagRafaPayload,
+      muteHttpExceptions: true
+    };
+    UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagRafaOpcoes);
 
     // ── Dispara webhook n8n para enviar mensagem ──
     var disparaPayload = JSON.stringify({
