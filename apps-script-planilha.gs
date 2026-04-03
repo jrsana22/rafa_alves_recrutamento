@@ -67,20 +67,24 @@ function doPost(e) {
     // Usa a instância "rafa_alves_recrutamento" que já está configurada com o número do Rafa
     UrlFetchApp.fetch(EVO_URL + '/message/sendText/' + EVO_INSTANCE, opcoes);
 
-    // ── Adiciona tag "recrutamento_rafa" no cliente ──
-    var tagClientePayload = JSON.stringify({
-      number: dados.whatsapp,
-      labelId: 'recrutamento_rafa',
-      action: 'add'
-    });
-    var tagClienteOpcoes = {
-      method: 'post',
-      contentType: 'application/json',
-      headers: { 'apikey': EVO_APIKEY },
-      payload: tagClientePayload,
-      muteHttpExceptions: true
-    };
-    UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagClienteOpcoes);
+    // ── Adiciona tags no cliente ──
+    var tagsCliente = ['recrutamento_rafa', '51'];  // 51 = Lead Consultor - IA
+
+    for (var i = 0; i < tagsCliente.length; i++) {
+      var tagClientePayload = JSON.stringify({
+        number: dados.whatsapp,
+        labelId: tagsCliente[i],
+        action: 'add'
+      });
+      var tagClienteOpcoes = {
+        method: 'post',
+        contentType: 'application/json',
+        headers: { 'apikey': EVO_APIKEY },
+        payload: tagClientePayload,
+        muteHttpExceptions: true
+      };
+      UrlFetchApp.fetch(EVO_URL + '/chat/handleLabel/' + EVO_INSTANCE, tagClienteOpcoes);
+    }
 
     // ── Adiciona tag "LEAD CONSULTOR - IA" no número do Rafa ──
     var tagRafaPayload = JSON.stringify({
