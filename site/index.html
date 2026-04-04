@@ -897,7 +897,8 @@
         phone: pendingFormData.whatsapp,
         ocupacao: pendingFormData.ocupacao,
         cidade: pendingFormData.cidade,
-        data: data
+        data: data,
+        tag: 'recrutamento_rafa'
       };
 
       fetch('https://webhook.dev.solucoesdeia.com/webhook/rafa_leads_recrutamento', {
@@ -909,7 +910,10 @@
       // Rastreia o evento de Lead no Meta Pixel
       fbq('track', 'Lead', {
         value: 0.00,
-        currency: 'BRL'
+        currency: 'BRL',
+        email: pendingFormData.email,
+        phone: pendingFormData.whatsapp,
+        firstName: pendingFormData.nome.split(' ')[0]
       });
 
       // Aguarda o pixel ser enviado antes de redirecionar
