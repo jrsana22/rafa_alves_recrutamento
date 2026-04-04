@@ -890,6 +890,22 @@
         body   : JSON.stringify(payload)
       });
 
+      // Envia dados do formulário pro webhook da uazapi (pro agente usar no prompt)
+      const webhookPayload = {
+        name: pendingFormData.nome,
+        email: pendingFormData.email,
+        phone: pendingFormData.whatsapp,
+        ocupacao: pendingFormData.ocupacao,
+        cidade: pendingFormData.cidade,
+        data: data
+      };
+
+      fetch('https://webhook.dev.solucoesdeia.com/webhook/rafa_leads_recrutamento', {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify(webhookPayload)
+      }).catch(err => console.log('Webhook enviado (opcional):', err));
+
       // Rastreia o evento de Lead no Meta Pixel
       fbq('track', 'Lead', {
         value: 0.00,
