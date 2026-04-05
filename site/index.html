@@ -65,7 +65,6 @@
       min-height: 100vh;
     }
 
-    /* ── BACKGROUND GLOW ── */
     .bg-glow {
       position: fixed;
       inset: 0;
@@ -94,7 +93,6 @@
       border-radius: 50%;
     }
 
-    /* ── LAYOUT ── */
     .page-wrapper {
       position: relative;
       z-index: 1;
@@ -103,7 +101,6 @@
       padding: 40px 20px 80px;
     }
 
-    /* ── HEADER BADGE ── */
     .badge-tag {
       display: inline-flex;
       align-items: center;
@@ -131,7 +128,6 @@
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    /* ── HERO ── */
     .hero {
       text-align: center;
       margin-bottom: 40px;
@@ -157,14 +153,12 @@
       line-height: 1.7;
     }
 
-    /* ── DIVIDER ── */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
       margin: 32px 0;
     }
 
-    /* ── HIGHLIGHTS ── */
     .highlights {
       display: flex;
       flex-direction: column;
@@ -198,9 +192,7 @@
     .highlight-icon.green  { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2); }
     .highlight-icon.purple { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2); }
     .highlight-icon.blue   { background: rgba(6,182,212,0.12);  border: 1px solid rgba(6,182,212,0.2); }
-    .highlight-body {
-      flex: 1;
-    }
+    .highlight-body { flex: 1; }
     .highlight-title {
       font-size: 15px;
       font-weight: 700;
@@ -219,7 +211,6 @@
       margin-top: 2px;
     }
 
-    /* ── BENEFITS LIST ── */
     .benefits-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -269,7 +260,6 @@
       color: var(--text-secondary);
     }
 
-    /* ── FORM CARD ── */
     .form-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -287,9 +277,7 @@
       height: 2px;
       background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
     }
-    .form-header {
-      margin-bottom: 28px;
-    }
+    .form-header { margin-bottom: 28px; }
     .form-header h2 {
       font-size: 20px;
       font-weight: 700;
@@ -300,10 +288,7 @@
       color: var(--text-secondary);
     }
 
-    /* ── FORM FIELDS ── */
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 20px; }
     label {
       display: block;
       font-size: 13px;
@@ -344,20 +329,10 @@
     }
     select option { background: #1c1c26; }
 
-    /* ── PHONE INPUT ── */
-    .phone-wrapper {
-      display: flex;
-      gap: 10px;
-    }
-    .ddi-select {
-      width: 110px;
-      flex-shrink: 0;
-    }
-    .phone-wrapper input {
-      flex: 1;
-    }
+    .phone-wrapper { display: flex; gap: 10px; }
+    .ddi-select { width: 110px; flex-shrink: 0; }
+    .phone-wrapper input { flex: 1; }
 
-    /* ── SUBMIT ── */
     .btn-submit {
       width: 100%;
       padding: 15px 24px;
@@ -382,14 +357,9 @@
       transform: translateY(-1px);
       box-shadow: 0 8px 28px rgba(99,102,241,0.4);
     }
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-    .btn-submit svg {
-      flex-shrink: 0;
-    }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit svg { flex-shrink: 0; }
 
-    /* ── PRIVACY NOTE ── */
     .privacy-note {
       display: flex;
       align-items: center;
@@ -400,7 +370,6 @@
       color: var(--text-muted);
     }
 
-    /* ── SUCCESS STATE ── */
     .success-state {
       display: none;
       text-align: center;
@@ -444,7 +413,6 @@
       margin-top: 20px;
     }
 
-    /* ── FOOTER ── */
     .page-footer {
       text-align: center;
       margin-top: 40px;
@@ -452,7 +420,6 @@
       color: var(--text-muted);
     }
 
-    /* ── MODAL ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -474,14 +441,8 @@
       animation: slideUp 0.3s ease-out;
     }
     @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .modal-icon {
       width: 56px;
@@ -518,10 +479,7 @@
       margin-bottom: 24px;
       letter-spacing: 1px;
     }
-    .modal-buttons {
-      display: flex;
-      gap: 12px;
-    }
+    .modal-buttons { display: flex; gap: 12px; }
     .modal-btn {
       flex: 1;
       padding: 12px 16px;
@@ -547,7 +505,6 @@
     }
     .modal-btn-confirm:hover { opacity: 0.92; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .page-wrapper { padding: 24px 16px 20px; }
       .form-card { padding: 24px 20px; order: 10; }
@@ -560,12 +517,10 @@
 </head>
 <body>
 
-
 <div class="bg-glow"></div>
 
 <div class="page-wrapper">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="badge-tag">
       <span class="badge-dot"></span>
@@ -582,7 +537,6 @@
     </p>
   </div>
 
-  <!-- STATS -->
   <div class="highlights">
     <div class="highlight-card">
       <div class="highlight-icon green">💰</div>
@@ -607,10 +561,8 @@
     </div>
   </div>
 
-  <!-- BENEFITS -->
   <div class="benefits-section">
     <p class="benefits-title">O que você vai ter acesso</p>
-
     <div class="benefit-item">
       <div class="benefit-icon green">🎯</div>
       <div class="benefit-text">
@@ -618,7 +570,6 @@
         <span>Aprenda no seu ritmo e já saia pronto para gerar resultado</span>
       </div>
     </div>
-
     <div class="benefit-item">
       <div class="benefit-icon purple">🤝</div>
       <div class="benefit-text">
@@ -626,7 +577,6 @@
         <span>Acompanhamento próximo desde o primeiro dia</span>
       </div>
     </div>
-
     <div class="benefit-item">
       <div class="benefit-icon blue">📱</div>
       <div class="benefit-text">
@@ -634,7 +584,6 @@
         <span>Estrutura profissional para você focar no que importa</span>
       </div>
     </div>
-
     <div class="benefit-item">
       <div class="benefit-icon gold">💰</div>
       <div class="benefit-text">
@@ -644,7 +593,6 @@
     </div>
   </div>
 
-  <!-- FORM CARD -->
   <div class="form-card">
     <div id="form-section">
       <div class="form-header">
@@ -653,48 +601,23 @@
       </div>
 
       <form id="lead-form" novalidate>
-
         <div class="form-group">
           <label for="nome">Seu nome completo <span class="required">*</span></label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            placeholder="Ex: Rafael Sousa"
-            autocomplete="name"
-            required
-          />
+          <input type="text" id="nome" name="nome" placeholder="Ex: Rafael Sousa" autocomplete="name" required />
         </div>
-
         <div class="form-group">
           <label for="email">E-mail <span class="required">*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Ex: seu@email.com"
-            autocomplete="email"
-            required
-          />
+          <input type="email" id="email" name="email" placeholder="Ex: seu@email.com" autocomplete="email" required />
         </div>
-
         <div class="form-group">
           <label for="whatsapp">WhatsApp <span class="required">*</span></label>
           <div class="phone-wrapper">
             <select class="ddi-select" id="ddi" name="ddi">
               <option value="+55">🇧🇷 +55</option>
             </select>
-            <input
-              type="tel"
-              id="whatsapp"
-              name="whatsapp"
-              placeholder="(71) 99999-9999"
-              autocomplete="tel"
-              required
-            />
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(71) 99999-9999" autocomplete="tel" required />
           </div>
         </div>
-
         <div class="form-group">
           <label for="ocupacao">Ocupação atual <span class="required">*</span></label>
           <select id="ocupacao" name="ocupacao" required>
@@ -707,16 +630,9 @@
             <option value="outro">Outro</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="cidade">Cidade de atuação <span class="required">*</span></label>
-          <input
-            type="text"
-            id="cidade"
-            name="cidade"
-            placeholder="Ex: Salvador, BA"
-            required
-          />
+          <input type="text" id="cidade" name="cidade" placeholder="Ex: Salvador, BA" required />
         </div>
 
         <button type="submit" class="btn-submit">
@@ -733,7 +649,6 @@
       </form>
     </div>
 
-    <!-- SUCCESS -->
     <div class="success-state" id="success-state">
       <div class="success-icon">✅</div>
       <h3>Cadastro realizado!</h3>
@@ -747,24 +662,19 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="page-footer">
     Ao se cadastrar, você concorda em ser contatado pelo WhatsApp informado.
   </div>
 
 </div>
 
-<!-- MODAL DE CONFIRMAÇÃO DE WHATSAPP -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal-whatsapp">
   <div class="modal-content">
     <div class="modal-icon">📱</div>
     <div class="modal-title">Seu WhatsApp tá correto?</div>
-    <div class="modal-description">
-      Confirme o número abaixo para continuarmos
-    </div>
-    <div class="modal-number" id="modal-number-display">
-      +55 (71) 99999-9999
-    </div>
+    <div class="modal-description">Confirme o número abaixo para continuarmos</div>
+    <div class="modal-number" id="modal-number-display">+55 (71) 99999-9999</div>
     <div class="modal-buttons">
       <button type="button" class="modal-btn modal-btn-cancel" id="modal-cancel">Corrigir</button>
       <button type="button" class="modal-btn modal-btn-confirm" id="modal-confirm">Confirmar</button>
@@ -773,16 +683,8 @@
 </div>
 
 <script>
-  /**
-   * ──────────────────────────────────────────────────────────────────────
-   *  CONFIGURAÇÃO
-   *  Após implantar o apps-script-planilha.gs como Web App no Google Apps
-   *  Script, cole a URL gerada abaixo.
-   * ──────────────────────────────────────────────────────────────────────
-   */
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHFs6YBEFvhUaQI-LUZ0Eslr3dftsstQ7rhUx3dPhgG4rMPkD74vqkPCCt5WBvpULTjA/exec';
-  // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
-
+  // ── URL DO APPS SCRIPT (atualizada) ──
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxT31mJy_gf0NwlTJaAy5VnG5lAdxxmb0eQuWrEOoRlteh3tdBvs3SQ9nvajfHoVLI2VQ/exec';
 
   // ── Máscara de telefone ──
   const phoneInput = document.getElementById('whatsapp');
@@ -794,13 +696,18 @@
     this.value = v;
   });
 
-  // ── Formata número → 55DDDNÚMERO ──
+  // ── Normaliza número: adiciona 55 e remove o 9 extra se houver ──
   function formatPhone(raw) {
-    const d = raw.replace(/\D/g, '');
-    return (d.startsWith('55') && d.length >= 12) ? d : '55' + d;
+    let d = raw.replace(/\D/g, '');
+    // Adiciona 55 se não tiver
+    if (!d.startsWith('55')) d = '55' + d;
+    // Remove o 9 extra: 55 + DDD(2) + 9 + número(8) = 13 dígitos
+    if (d.startsWith('55') && d.length === 13) {
+      d = '55' + d.substring(2, 4) + d.substring(5);
+    }
+    return d;
   }
 
-  // ── Ícone de loading ──
   const ICON_LOADING = `
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="animation:spin 1s linear infinite">
       <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="20"/>
@@ -811,15 +718,14 @@
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/>
     </svg> Quero participar — Entrar em contato`;
 
-  // ── Form submit ──
-  const form             = document.getElementById('lead-form');
-  const btnSubmit        = form.querySelector('.btn-submit');
-  const modal            = document.getElementById('modal-whatsapp');
-  const modalCancel      = document.getElementById('modal-cancel');
-  const modalConfirm     = document.getElementById('modal-confirm');
+  const form               = document.getElementById('lead-form');
+  const btnSubmit          = form.querySelector('.btn-submit');
+  const modal              = document.getElementById('modal-whatsapp');
+  const modalCancel        = document.getElementById('modal-cancel');
+  const modalConfirm       = document.getElementById('modal-confirm');
   const modalNumberDisplay = document.getElementById('modal-number-display');
 
-  let pendingFormData = null;  // Armazena dados do formulário enquanto aguarda confirmação
+  let pendingFormData = null;
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
@@ -834,12 +740,7 @@
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('COLE_AQUI')) {
-      alert('⚠️ Configure a URL do Apps Script antes de publicar a página.');
-      return;
-    }
 
-    // Armazena dados e mostra modal de confirmação
     pendingFormData = {
       nome,
       email,
@@ -848,57 +749,44 @@
       cidade
     };
 
-    // Formata número com DDI para exibição
-    const phoneFormatted = '+55 ' + whatsapp;
-    modalNumberDisplay.textContent = phoneFormatted;
-
-    // Mostra modal
+    modalNumberDisplay.textContent = '+55 ' + whatsapp;
     modal.classList.add('visible');
   });
 
-  // ── Cancelar confirmação ──
   modalCancel.addEventListener('click', function () {
     modal.classList.remove('visible');
     pendingFormData = null;
     document.getElementById('whatsapp').focus();
   });
 
-  // ── Confirmar e enviar ──
   modalConfirm.addEventListener('click', async function () {
     modal.classList.remove('visible');
-
     if (!pendingFormData) return;
 
     btnSubmit.disabled = true;
     btnSubmit.innerHTML = ICON_LOADING;
 
-    // Formata data dd/mm/aaaa (Brasília)
     const agora = new Date();
     const data  = agora.toLocaleDateString('pt-BR', { timeZone: 'America/Bahia' });
 
-    const payload = {
-      ...pendingFormData,
-      data          // dd/mm/aaaa — salvo na planilha e usada pelo Apps Script
-    };
+    const payload = { ...pendingFormData, data };
 
     try {
-      // O Apps Script cuida de: salvar planilha + enviar WhatsApp + adicionar tag n8n
       await fetch(APPS_SCRIPT_URL, {
         method : 'POST',
-        mode   : 'no-cors',          // Apps Script não precisa de CORS preflight
+        mode   : 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body   : JSON.stringify(payload)
       });
 
-      // Envia dados do formulário pro webhook da uazapi (pro agente usar no prompt)
       const webhookPayload = {
-        nome: pendingFormData.nome,
-        email: pendingFormData.email,
-        whatsapp: pendingFormData.whatsapp,
-        ocupacao: pendingFormData.ocupacao,
-        cidade: pendingFormData.cidade,
-        data: data,
-        tag: 'recrutamento_rafa'
+        nome     : pendingFormData.nome,
+        email    : pendingFormData.email,
+        whatsapp : pendingFormData.whatsapp,
+        ocupacao : pendingFormData.ocupacao,
+        cidade   : pendingFormData.cidade,
+        data     : data,
+        tag      : 'recrutamento_rafa'
       };
 
       fetch('https://webhook.dev.solucoesdeia.com/webhook/rafa_leads_recrutamento', {
@@ -907,16 +795,14 @@
         body   : JSON.stringify(webhookPayload)
       }).catch(err => console.log('Webhook enviado (opcional):', err));
 
-      // Rastreia o evento de Lead no Meta Pixel
       fbq('track', 'Lead', {
-        value: 0.00,
-        currency: 'BRL',
-        email: pendingFormData.email,
-        phone: pendingFormData.whatsapp,
+        value    : 0.00,
+        currency : 'BRL',
+        email    : pendingFormData.email,
+        phone    : pendingFormData.whatsapp,
         firstName: pendingFormData.nome.split(' ')[0]
       });
 
-      // Aguarda o pixel ser enviado antes de redirecionar
       setTimeout(function() {
         window.location.href = 'obrigado.html?t=' + Date.now();
       }, 500);
