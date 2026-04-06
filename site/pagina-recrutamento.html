@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="cidades-data.js"></script>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -812,37 +813,6 @@
    */
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHFs6YBEFvhUaQI-LUZ0Eslr3dftsstQ7rhUx3dPhgG4rMPkD74vqkPCCt5WBvpULTjA/exec';
   // Exemplo: 'https://script.google.com/macros/s/AKfycb.../exec'
-
-  // ── Mapa de Estados e Cidades ──
-  const estadosCidades = {
-    AC: ['Rio Branco', 'Cruzeiro do Sul', 'Tarauacá', 'Feijó'],
-    AL: ['Maceió', 'Rio Largo', 'Arapiraca', 'Delmiro Gouveia', 'Coruripe', 'Penedo'],
-    AP: ['Macapá', 'Santana', 'Oiapoque'],
-    AM: ['Manaus', 'Itacoatiara', 'Parintins', 'Coari', 'Tabatinga'],
-    BA: ['Salvador', 'Lauro de Freitas', 'Feira de Santana', 'Vitória da Conquista', 'Camaçari', 'Ilhéus', 'Itabuna', 'Jequié', 'Alagoinhas', 'Barreiras', 'Irecê', 'Montes Claros', 'Ponto Novo', 'Teixeira de Freitas', 'Camacan', 'Canavieiras', 'Uruçuca', 'Valença', 'Santo Estêvão', 'Mutuípe', 'Nazaré', 'Cachoeira', 'Amargosa', 'Amélia Rodrigues', 'Santo Antônio de Jesus'],
-    CE: ['Fortaleza', 'Caucaia', 'Juazeiro do Norte', 'Maracanaú', 'Sobral', 'Crato', 'Itapipoca', 'Iguatu', 'Quixadá'],
-    DF: ['Brasília', 'Taguatinga', 'Ceilândia', 'Samambaia', 'Planaltina', 'Guará', 'Gama', 'Santa Maria', 'Riacho Fundo', 'Núcleo Bandeirante'],
-    ES: ['Vitória', 'Vila Velha', 'Serra', 'Cariacica', 'Viana', 'Linhares', 'Aracruz', 'Colatina', 'Cachoeiro de Itapemirim', 'Marataízes'],
-    GO: ['Goiânia', 'Anápolis', 'Aparecida de Goiânia', 'Luziânia', 'Águas Lindas de Goiás', 'Senador Canedo', 'Novo Gama', 'Rio Verde', 'Jataí'],
-    MA: ['São Luís', 'Imperatriz', 'Caxias', 'Timon', 'Bacabal', 'Balsas', 'Codó', 'Açailândia'],
-    MT: ['Cuiabá', 'Várzea Grande', 'Rondonópolis', 'Sinop', 'Cáceres', 'Tangará da Serra', 'Primavera do Leste'],
-    MS: ['Campo Grande', 'Dourados', 'Três Lagoas', 'Corumbá', 'Ponta Porã', 'Aquidauana', 'Maracajú'],
-    MG: ['Belo Horizonte', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Montes Claros', 'Betim', 'Governador Valadares', 'Divinópolis', 'Santa Luzia', 'Uberaba', 'Sete Lagoas', 'Ipatinga', 'Maringá', 'Barbacena'],
-    PA: ['Belém', 'Ananindeua', 'Santarém', 'Marabá', 'Castanhal', 'Breves', 'Altamira', 'Parauapebas'],
-    PB: ['João Pessoa', 'Campina Grande', 'Patos', 'Sousa', 'Pombal', 'Itaporanga', 'Guarabira'],
-    PR: ['Curitiba', 'Londrina', 'Maringá', 'Ponta Grossa', 'Cascavel', 'Foz do Iguaçu', 'Arapiraca', 'Presidente Prudente', 'Toledo', 'Apucarana'],
-    PE: ['Recife', 'Jaboatão dos Guararapes', 'Olinda', 'Caruaru', 'Petrolina', 'Paulista', 'Igarassu', 'Abreu e Lima', 'Arcoverde'],
-    PI: ['Teresina', 'Parnaíba', 'Picos', 'Piripiri', 'Campo Maior', 'Oeiras', 'Floriano'],
-    RJ: ['Rio de Janeiro', 'Niterói', 'Duque de Caxias', 'São Gonçalo', 'Nova Iguaçu', 'São João de Meriti', 'Nilópolis', 'Cabo Frio', 'Macaé', 'Angra dos Reis'],
-    RN: ['Natal', 'Mossoró', 'Parnamirim', 'Assu', 'Currais Novos', 'Ceará-Mirim', 'Açu'],
-    RS: ['Porto Alegre', 'Caxias do Sul', 'Pelotas', 'Santa Maria', 'Novo Hamburgo', 'Gravataí', 'Canoas', 'Alvorada', 'São Leopoldo'],
-    RO: ['Porto Velho', 'Ji-Paraná', 'Ariquemes', 'Vilhena', 'Cacoal'],
-    RR: ['Boa Vista', 'Rorainópolis', 'Caracaraí'],
-    SC: ['Florianópolis', 'Joinville', 'Blumenau', 'Criciúma', 'Chapecó', 'Itajaí', 'Brusque', 'Lages', 'Jaraguá do Sul'],
-    SP: ['São Paulo', 'Guarulhos', 'Campinas', 'São Bernardo do Campo', 'Santo André', 'Ribeirão Preto', 'Sorocaba', 'Mauá', 'São José dos Campos', 'Osasco', 'Diadema', 'Bauru', 'Marília', 'Piracicaba', 'Jundiaí', 'Araraquara'],
-    SE: ['Aracaju', 'Nossa Senhora do Socorro', 'Lagarto', 'São Cristóvão', 'Itabaiana', 'Tobias Barreto'],
-    TO: ['Palmas', 'Araguaína', 'Gurupi', 'Tocantinópolis', 'Porto Nacional']
-  };
 
   // ── Popular cidades ao mudar estado ──
   const estadoSelect = document.getElementById('estado');
