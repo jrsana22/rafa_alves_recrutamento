@@ -631,11 +631,6 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="cidade">Cidade de atuação <span class="required">*</span></label>
-          <input type="text" id="cidade" name="cidade" placeholder="Ex: Salvador" required />
-        </div>
-
-        <div class="form-group">
           <label for="estado">Estado <span class="required">*</span></label>
           <select id="estado" name="estado" required>
             <option value="" disabled selected>Selecione o estado</option>
@@ -666,6 +661,13 @@
             <option value="SP">São Paulo — SP</option>
             <option value="SE">Sergipe — SE</option>
             <option value="TO">Tocantins — TO</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cidade">Cidade de atuação <span class="required">*</span></label>
+          <select id="cidade" name="cidade" required disabled>
+            <option value="" disabled selected>Selecione o estado primeiro</option>
           </select>
         </div>
 
@@ -720,6 +722,58 @@
   // ── URL DO APPS SCRIPT (atualizada) ──
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxT31mJy_gf0NwlTJaAy5VnG5lAdxxmb0eQuWrEOoRlteh3tdBvs3SQ9nvajfHoVLI2VQ/exec';
 
+  // ── Mapa de Estados e Cidades ──
+  const estadosCidades = {
+    AC: ['Rio Branco', 'Cruzeiro do Sul'],
+    AL: ['Maceió', 'Rio Largo', 'Arapiraca'],
+    AP: ['Macapá', 'Santana'],
+    AM: ['Manaus', 'Itacoatiara', 'Parintins'],
+    BA: ['Salvador', 'Lauro de Freitas', 'Feira de Santana', 'Vitória da Conquista', 'Camaçari', 'Ilhéus'],
+    CE: ['Fortaleza', 'Caucaia', 'Juazeiro do Norte', 'Maracanaú'],
+    DF: ['Brasília'],
+    ES: ['Vitória', 'Vila Velha', 'Serra', 'Cariacica'],
+    GO: ['Goiânia', 'Anápolis', 'Aparecida de Goiânia'],
+    MA: ['São Luís', 'Imperatriz', 'Caxias'],
+    MT: ['Cuiabá', 'Várzea Grande', 'Rondonópolis'],
+    MS: ['Campo Grande', 'Dourados', 'Três Lagoas'],
+    MG: ['Belo Horizonte', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Montes Claros'],
+    PA: ['Belém', 'Ananindeua', 'Santarém', 'Marabá'],
+    PB: ['João Pessoa', 'Campina Grande', 'Patos'],
+    PR: ['Curitiba', 'Londrina', 'Maringá', 'Ponta Grossa', 'Cascavel'],
+    PE: ['Recife', 'Jaboatão dos Guararapes', 'Olinda', 'Caruaru'],
+    PI: ['Teresina', 'Parnaíba', 'Picos'],
+    RJ: ['Rio de Janeiro', 'Niterói', 'Duque de Caxias', 'São Gonçalo', 'Nova Iguaçu'],
+    RN: ['Natal', 'Mossoró', 'Parnamirim'],
+    RS: ['Porto Alegre', 'Caxias do Sul', 'Pelotas', 'Santa Maria'],
+    RO: ['Porto Velho', 'Ji-Paraná', 'Ariquemes'],
+    RR: ['Boa Vista', 'Rorainópolis'],
+    SC: ['Florianópolis', 'Joinville', 'Blumenau', 'Criciúma'],
+    SP: ['São Paulo', 'Guarulhos', 'Campinas', 'São Bernardo do Campo', 'Santo André', 'Ribeirão Preto'],
+    SE: ['Aracaju', 'Nossa Senhora do Socorro', 'Lagarto'],
+    TO: ['Palmas', 'Araguaína', 'Gurupi']
+  };
+
+  // ── Popular cidades ao mudar estado ──
+  const estadoSelect = document.getElementById('estado');
+  const cidadeSelect = document.getElementById('cidade');
+
+  estadoSelect.addEventListener('change', function() {
+    const estado = this.value;
+    cidadeSelect.innerHTML = '<option value="" disabled selected>Selecione a cidade</option>';
+
+    if (estado && estadosCidades[estado]) {
+      estadosCidades[estado].forEach(cidade => {
+        const option = document.createElement('option');
+        option.value = cidade;
+        option.textContent = cidade;
+        cidadeSelect.appendChild(option);
+      });
+      cidadeSelect.disabled = false;
+    } else {
+      cidadeSelect.disabled = true;
+    }
+  });
+
   // ── Máscara de telefone ──
   const phoneInput = document.getElementById('whatsapp');
   phoneInput.addEventListener('input', function () {
@@ -763,10 +817,10 @@
     const email    = document.getElementById('email').value.trim();
     const whatsapp = document.getElementById('whatsapp').value.trim();
     const ocupacao = document.getElementById('ocupacao').value;
-    const cidade   = document.getElementById('cidade').value.trim();
     const estado   = document.getElementById('estado').value;
+    const cidade   = document.getElementById('cidade').value;
 
-    if (!nome || !email || !whatsapp || !ocupacao || !cidade || !estado) {
+    if (!nome || !email || !whatsapp || !ocupacao || !estado || !cidade) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
